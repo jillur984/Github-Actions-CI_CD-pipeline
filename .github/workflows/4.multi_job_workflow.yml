@@ -1,0 +1,25 @@
+name: multi workflow
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+    
+
+jobs:
+  first-workflow:
+    runs-on: windows-latest
+
+    steps:
+    - name: first workflow
+      run: |
+        echo "Hello world"
+        echo "Hello world"
+
+  second-workflow:
+    runs-on: windows-latest
+
+    steps:
+      - name: second-workflow
+        run: |
+          echo "Hello world 2"
+          echo "Hello world 2 and it is my second workflow"
