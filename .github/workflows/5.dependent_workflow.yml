@@ -1,0 +1,35 @@
+name: dependent workflow
+
+on:
+  workflow_dispatch:
+    
+    
+jobs:
+  first-workflow:
+    runs-on: windows-latest
+
+    steps:
+    - name: first workflow
+      run: |
+        echo "Hello world"
+        echo "Hello world"
+
+  second-workflow:
+    runs-on: windows-latest
+    needs: [first-workflow] # it is now depent on first. when first done after it will work
+
+    steps:
+      - name: second-workflow
+        run: |
+          echo "Hello world 2"
+          echo "Hello world 2 and it is my second workflow"
+  
+  third-workflow:
+      runs-on: windows-latest
+      needs:  [first-workflow,second-workflow] # depent on 2nd and 1st
+
+      steps:
+        - name: third-workflow
+          run: |
+            echo "This is thrid workflow"
+            echo "I am from 3rd workflow"
