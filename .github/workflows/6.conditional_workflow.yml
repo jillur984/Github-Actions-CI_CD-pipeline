@@ -1,0 +1,16 @@
+name: conditional workflow
+
+
+
+on:
+  push:
+    paths:
+      - "backend/ * *"
+jobs:
+  conditional-workflow:
+    runs-on: windows-latest
+    steps:
+      - name: build backend images
+        run: echo "Backend image is building"
+
+
